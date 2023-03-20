@@ -1,14 +1,5 @@
-// function gameBoard() {
-//     let theGameboard = []
-//     for (let i = 1; i < 9; i++){
-//         for (let j = 1; j < 9; j++){
-//             theGameboard.push([i,j]);
-//         }
-//     }
-//     return theGameboard;
-// }
-
-
+let visited = [];
+let queue = [];
 
 let possibleKnightsMoves = [[1,2], [2,1], [2,-1], [1,-2], [-1,-2], [-2,-1], [-2,1], [-1, 2]];
 
@@ -20,9 +11,6 @@ class knightNode {
         this.route = [];
     }
 }
-
-let visited = [];
-let queue = [];
 
 function knightMoves(startPosition, endPosition){
     let knight = new knightNode(startPosition[0], startPosition[1]);
@@ -43,7 +31,7 @@ function knightMoves(startPosition, endPosition){
                     queue.push(next);
                     visited.push([next.xpos, next.ypos]);
                     if (endPosition[0] == next.xpos && endPosition[1] == next.ypos){
-                        console.log(`You made it in ${next.route.length - 1} moves`)
+                        console.log(`It takes a minimum of ${next.route.length - 1} moves`)
                         console.log(next.route);
                         return;        
                     }
@@ -76,7 +64,3 @@ function isVisited(xpos, ypos){
 
 
 knightMoves([1,1], [8,8])
-
-
-
-// let theGameboard = gameBoard();
